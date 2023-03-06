@@ -6,7 +6,7 @@ export const useCoder = () => useContext(CoderContext);
 export const CoderProvider = ({ children }) => {
   const alphabetENG = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const [key, setKey] = useState(3);
-  const [userMessage, setUserMessage] = useState("hi guys").toUpperCase();
+  const [userMessage, setUserMessage] = useState("hi guys");
 
   function encoder(message, alphabet, shift) {
     let result = "";
