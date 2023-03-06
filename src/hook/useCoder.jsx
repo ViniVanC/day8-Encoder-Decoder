@@ -8,7 +8,7 @@ export const CoderProvider = ({ children }) => {
   const [key, setKey] = useState(3);
   const [userMessage, setUserMessage] = useState("Hello".toUpperCase());
   const [result, setResult] = useState("");
-  const [revers, setRevers] = useReducer((r) => !r, true);
+  const [revers, setRevers] = useReducer((r) => !r, false);
 
   function coder(str, shift) {
     let res = "";

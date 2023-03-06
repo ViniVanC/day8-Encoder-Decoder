@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+$linen: #fae5e2;
+$azalea: #f9d6d4;
+$rosu-fog: #e6b5b8;
+$pharlap: #a7767c;
+$mortar: #48404d;
+
+input[type="range"] {
+  -webkit-appearance: none;
+  padding: 0;
+  background-color: $azalea;
+  border-radius: 5px;
+  height: 5px;
+  width: 100%;
+  cursor: col-resize;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: $rosu-fog;
+  }
+}
