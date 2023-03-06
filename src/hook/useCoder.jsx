@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useReducer, useState } from "react";
 
 const CoderContext = createContext();
 export const useCoder = () => useContext(CoderContext);
@@ -6,24 +6,34 @@ export const useCoder = () => useContext(CoderContext);
 export const CoderProvider = ({ children }) => {
   const alphabetENG = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const [key, setKey] = useState(3);
-  const [userMessage, setUserMessage] = useState("hi guys");
+  const [userMessage, setUserMessage] = useState("Hello".toUpperCase());
+  const [result, setResult] = useState("");
+  const [revers, setRevers] = useReducer((r) => !r, true);
 
-  function encoder(message, alphabet, shift) {
-    let result = "";
+  function coder(str, shift) {
+    let res = "";
 
-    for (let i = 0; i < message.length; i++) {
-      const letter = message[i];
-      let position = (alphabet.indexOf(letter) + shift) % alphabet.length;
-      result += message[i] === " " ? " " : alphabet[position];
+    for (let i = 0; i < str.length; i++) {
+      const letter = str[i];
+      let position = (alphabetENG.indexOf(letter) + shift) % alphabetENG.length;
+      res +=
+        str[i] === " "
+          ? " "
+          : alphabetENG[
+              position < 0 ? alphabetENG.length + position : position
+            ];
     }
 
-    return result;
+    setResult(res);
   }
 
-  function decoder(func, message, alphabet, shift) {
-    return func(message, alphabet, -shift);
+  function decoder() {
+    coder(userMessage, -key);
   }
 
+  function encoder() {
+    coder(userMessage, key);
+  }
   return (
     <CoderContext.Provider
       value={{
@@ -32,6 +42,9 @@ export const CoderProvider = ({ children }) => {
         userMessage,
         setUserMessage,
         alphabetENG,
+        result,
+        revers,
+        setRevers,
         encoder,
         decoder,
       }}
