@@ -1,11 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
-import { v4 } from "uuid";
+import React, { createContext, useContext, useState } from "react";
 
 const CoderContext = createContext();
 export const useCoder = () => useContext(CoderContext);
