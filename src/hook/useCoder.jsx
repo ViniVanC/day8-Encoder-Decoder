@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useReducer, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 
 const CoderContext = createContext();
 export const useCoder = () => useContext(CoderContext);
@@ -34,6 +40,11 @@ export const CoderProvider = ({ children }) => {
   function encoder() {
     coder(userMessage, key);
   }
+
+  useEffect(() => {
+    revers ? encoder() : decoder();
+  }, [key, userMessage]);
+
   return (
     <CoderContext.Provider
       value={{

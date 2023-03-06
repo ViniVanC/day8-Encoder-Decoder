@@ -43,7 +43,7 @@ export const CoderForm = () => {
         className="mb-[20px]"
         type="range"
         min={0}
-        max={alphabetENG.length}
+        max={alphabetENG.length - 1}
         value={key}
         onChange={(e) => setKey(e.target.value)}
       />
